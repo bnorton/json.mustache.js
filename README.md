@@ -36,6 +36,7 @@ var template = require('json.mustache.js');
     "db": "your-db"
   }
 }
+```
 
 ###Use it
 ```javascript
