@@ -28,4 +28,14 @@ describe('json.mustache', function() {
       expect(config.url).toBe('mongodb://mongodb.example.com:27012/production-database');
     });
   });
+
+  describe('when a config key value is missing', function() {
+    beforeEach(function() {
+      config = json('sample', 'missing');
+    });
+
+    it('should not interpolate the value', function() {
+      expect(config.url).toBe('{{port}}/{{id}}');
+    });
+  });
 });
