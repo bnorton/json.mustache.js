@@ -32,7 +32,7 @@ var template = require('json.mustache.js');
     "url": "mongodb://{{id}}:{{secret}}@sub.mongonodes.com:{{port}}/{{db}}",
     "id": "your-username",
     "secret": "your-password",
-    "port": 27074
+    "port": 27074,
     "db": "your-db"
   }
 }
