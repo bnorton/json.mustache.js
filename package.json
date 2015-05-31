@@ -1,7 +1,7 @@
 {
   "name": "json.mustache.js",
   "repository": "https://github.com/bnorton/json.mustache.js.git",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "license": "MIT",
   "description": "",
   "keywords": [
