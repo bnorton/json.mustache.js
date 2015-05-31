@@ -1,7 +1,7 @@
 {
   "name": "json.mustache.js",
   "repository": "https://github.com/bnorton/json.mustache.js.git",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "license": "MIT",
   "description": "JSON configuration files with interpolated values",
   "keywords": [
