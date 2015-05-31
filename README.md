@@ -1,6 +1,6 @@
 # json.mustache.js
 
-[![Circle CI](https://circleci.com/gh/bnorton/json.mustache.js.svg?style=svg)](https://circleci.com/gh/bnorton/json.mustache.js)
+[![Circle CI](https://circleci.com/gh/bnorton/json.mustache.js.svg?style=svg)](https://circleci.com/gh/bnorton/json.mustache.js)  
 [![npm version](https://badge.fury.io/js/json.mustache.js.svg)](http://badge.fury.io/js/json.mustache.js)
 
 ##JSON configuration files with interpolated values
