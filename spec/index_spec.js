@@ -1,25 +1,31 @@
-describe('lib', function() {
-  var lib, Library = require('../lib/index');
+describe('json.mustache', function() {
+  var config, json = require('../lib/index');
 
   beforeEach(function() {
-    lib = new Library({name: 'John Doe'});
+    config = json('sample');
   });
 
-  describe('.self', function() {
-    it('should be iteself', function() {
-      expect(Library.self()).toBe(Library);
-    });
-
-    describe('when the lib is applied', function() {
-      it('should be itself' , function() {
-        expect(Library.self.apply(global)).toBe(Library);
-      });
-    });
+  it('should have the value', function() {
+    expect(config.id).toBe('test-database');
+    expect(config.port).toBe(27011);
   });
 
-  describe('#say', function() {
-    it('should have the name', function() {
-      expect(lib.say()).toBe('Hi, I\'m John Doe');
+  it('should interpolate the value', function() {
+    expect(config.url).toBe('mongodb://localhost:27011/test-database');
+  });
+
+  describe('when given a explicit environment', function() {
+    beforeEach(function() {
+      config = json('sample', 'production');
+    });
+
+    it('should have the value', function() {
+      expect(config.id).toBe('production-database');
+      expect(config.port).toBe(27012);
+    });
+
+    it('should interpolate the value', function() {
+      expect(config.url).toBe('mongodb://mongodb.example.com:27012/production-database');
     });
   });
 });

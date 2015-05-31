@@ -1,0 +1,15 @@
+{
+  "test": {
+    "id": "test-database",
+    "port": 27011,
+    "url": "mongodb://localhost:{{port}}/{{id}}"
+  },
+  "missing": {
+    "url": "{{port}}/{{id}}"
+  },
+  "production": {
+    "id": "production-database",
+    "port": 27012,
+    "url": "mongodb://mongodb.example.com:{{port}}/{{id}}"
+  }
+}
