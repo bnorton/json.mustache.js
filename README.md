@@ -1,54 +1,46 @@
-# lib.js
+# json.mustache.js
 
-A base configuration and starter project for a simple JavaScript library / Component
+[![Circle CI](https://circleci.com/gh/bnorton/json.mustache.js.svg?style=svg)](https://circleci.com/gh/bnorton/json.mustache.js)
+[![npm version](https://badge.fury.io/js/json.mustache.js.svg)](http://badge.fury.io/js/json.mustache.js)
 
-##Getting Started
+##JSON configuration files with interpolated values
 
-####Clone this repository
-Setup a new directory and update the origin
+#Getting started
+
+###Install it
+```bash
+$ npm install json.mustache.js
+```
+
+###Require it
 ```javascript
-git clone git@github.com:{{username}}/lib.js.git {{name}}.js
-cd {{name}}.js
-git remote set-url origin git@github.com:{{username}}/{{name}}.js.git
+var template = require('json.mustache.js');
 ```
 
-####Search the project for things to replace
-1. Rename `{{name}}` to the new library name
-1. Rename `{{username}}` with yours on GitHub and CircleCI respectively
-1. Rename `{{full name}}` with your name and company name (if any)
+###Add your configuration file (i.e. config/sample.json)
+```json
+{
+  "test": {
+    "url": "mongodb://localhost:27017/{{id}}",
+    "id": "test-db-name"
+  },
+  "development": {
+    "url": "mongodb://localhost:27017/{{id}}",
+    "id": "hookly-development"
+  },
+  "production": {
+    "url": "mongodb://{{id}}:{{secret}}@sub.mongonodes.com:{{port}}/{{db}}",
+    "id": "your-username",
+    "secret": "your-password",
+    "port": 27074
+    "db": "your-db"
+  }
+}
 
-####Add and Install dependencies
-Add any libraries / dependencies that you know of then
-```bash
-$ npm install -g browserify
-$ npm install -g uglify
-$ npm install
-```
-
-####Add tests
-```bash
-$ make test
-```
-
-####Add implementations
-```bash
-$ make test
-```
-
-####Build you first browserified / minified versions and publish
-```bash
-$ make
-$ git commit -am "[Release] Version x.y.z"
-$ git tag -a 0.9.0 -m "[Release] Version x.y.z" -m "Other words of wisdom and what has changed"
-$ npm publish
-```
-
-#### Add this project to CircleCI
-Enable the build status at the top of this doc
-
-------------------------
-
-####Replace this document with the real deal and `#win`
-```bash
-$ mv README.lib.md README.md
+###Use it
+```javascript
+process.env.NODE_ENV = 'production';
+var config = template('config-file.json');
+config.url
+//=> "mongodb://your-username:your-password@sub.mongonodes.com:27074/your-db"
 ```
