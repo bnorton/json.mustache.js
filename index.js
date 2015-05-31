@@ -98,10 +98,16 @@ process.umask = function() { return 0; };
 
 },{}],3:[function(require,module,exports){
 (function (process){
-var files = require('fs');
+var files = require('fs'),
+  cache = {};
 
 json = function(name, env) {
   env || (env = process.env.NODE_ENV);
+
+  var cacheKey = name+':'+env;
+
+  if(cache[cacheKey])
+    return cache[cacheKey];
 
   var string, key, config = JSON.parse(files.readFileSync(process.cwd()+'/config/'+name+'.json'))[env],
     keys = Object.keys(config);
@@ -116,7 +122,7 @@ json = function(name, env) {
     }
   }
 
-  return config;
+  return cache[cacheKey] = config;
 };
 
 exports = module.exports = json;

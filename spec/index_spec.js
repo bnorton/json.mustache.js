@@ -2,7 +2,18 @@ describe('json.mustache', function() {
   var config, json = require('../lib/index');
 
   beforeEach(function() {
+    spyOn(process, 'cwd').and.callThrough();
+
     config = json('sample');
+  });
+
+  it('should cache the contents', function() {
+    expect(process.cwd.calls.count()).toBe(1);
+
+    expect(json('sample').id).toBe('test-database');
+    expect(json('sample').id).toBe('test-database');
+
+    expect(process.cwd.calls.count()).toBe(1);
   });
 
   it('should have the value', function() {
